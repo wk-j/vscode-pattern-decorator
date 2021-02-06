@@ -2,15 +2,23 @@ import * as vscode from 'vscode';
 
 type DecoratorConfig = {
     pattern: string
-    decorator: string
+    before: string
+    after: string
 }
 
-
-
-function patternDecorationType(text) {
+function patternDecorationType(before, after) {
     return vscode.window.createTextEditorDecorationType({
         after: {
-            contentText: text
+            contentText: after,
+            color: "dimgray",
+            fontWeight: "100"
+            // textDecoration: "none; font-size: 15px"
+        },
+        before: {
+            contentText: before,
+            color: "dimgray",
+            fontWeight: "100"
+            // textDecoration: "none; font-size: 15px"
         },
         // cursor: 'crosshair',
         isWholeLine: false,
@@ -30,7 +38,7 @@ export function activate(context: vscode.ExtensionContext) {
     let types = config.map(x => {
         return {
             key: x.pattern,
-            type: patternDecorationType(x.decorator)
+            type: patternDecorationType(x.before, x.after)
         }
     })
 
@@ -80,7 +88,7 @@ export function activate(context: vscode.ExtensionContext) {
             clearTimeout(timeout);
             timeout = undefined;
         }
-        timeout = setTimeout(updateDecorations, 1000);
+        timeout = setTimeout(updateDecorations, 2000);
         // }
     }
 

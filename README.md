@@ -15,7 +15,8 @@
         "decorators": [
             {
                 "pattern": "192\\.168\\.0\\.100",
-                "decorator": ":Production"
+                "before": "{",
+                "after": "}:Dev"
             }
         ]
     }
