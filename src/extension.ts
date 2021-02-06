@@ -75,13 +75,13 @@ export function activate(context: vscode.ExtensionContext) {
 
     function triggerUpdateDecorations() {
         var file = vscode.window.activeTextEditor.document.fileName;
-        if (file.endsWith(".md")) {
-            if (timeout) {
-                clearTimeout(timeout);
-                timeout = undefined;
-            }
-            timeout = setTimeout(updateDecorations, 1000);
+        // if (file.endsWith(".md")) {
+        if (timeout) {
+            clearTimeout(timeout);
+            timeout = undefined;
         }
+        timeout = setTimeout(updateDecorations, 1000);
+        // }
     }
 
     if (activeEditor) {
