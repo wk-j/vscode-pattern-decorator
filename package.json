@@ -11,14 +11,19 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "*"
     ],
     "main": "./out/extension",
     "contributes": {
-        "commands": [
+        "colors": [
             {
-                "command": "extension.sayHello",
-                "title": "Hello World"
+                "id": "myextension.largeNumberBackground",
+                "description": "Background decoration color for large numbers",
+                "defaults": {
+                    "dark": "#FF000055",
+                    "light": "#FF000055",
+                    "highContrast": "#FF000055"
+                }
             }
         ]
     },
