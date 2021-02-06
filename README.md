@@ -6,8 +6,7 @@
 
 [![Version](https://vsmarketplacebadge.apphb.com/version/wk-j.pattern-decorator.svg)](https://marketplace.visualstudio.com/items?itemName=wk-j.pattern-decorator) [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/wk-j.pattern-decorator.svg)](https://marketplace.visualstudio.com/items?itemName=wk-j.pattern-decorator)
 
-
-# Settings
+# Update workspace settings
 
 ```json
 {
@@ -22,3 +21,9 @@
     }
 }
 ```
+
+# Result
+
+<p align="center">
+    <img src="https://github.com/wk-j/vscode-pattern-decorator/blob/master/resource/screen.png?raw=true" />
+</p>
