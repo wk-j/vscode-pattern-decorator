@@ -1,6 +1,6 @@
 {
-    "name": "pattern-decorate",
-    "displayName": "pattern-decorate",
+    "name": "pattern-decorator",
+    "displayName": "Pattern decorator",
     "description": "",
     "version": "0.0.1",
     "publisher": "wk-j",
@@ -17,7 +17,7 @@
     "contributes": {
         "colors": [
             {
-                "id": "myextension.largeNumberBackground",
+                "id": "x",
                 "description": "Background decoration color for large numbers",
                 "defaults": {
                     "dark": "#FF000055",
