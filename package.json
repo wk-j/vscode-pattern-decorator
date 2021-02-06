@@ -4,6 +4,10 @@
     "description": "",
     "version": "0.0.1",
     "publisher": "wk-j",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/wk-j/vscode-pattern-decorator"
+    },
     "engines": {
         "vscode": "^1.53.0"
     },
