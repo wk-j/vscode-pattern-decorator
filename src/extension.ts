@@ -94,13 +94,13 @@ export function activate(context: vscode.ExtensionContext) {
     // }
 
     vscode.workspace.onDidChangeConfiguration(() => {
-        config = vscode.workspace.getConfiguration("patternDecorator").get<DecoratorConfig[]>("decorators")
-        types = config.map(x => {
-            return {
-                key: x.pattern,
-                type: patternDecorationType(x.before, x.after)
-            }
-        })
+        // config = vscode.workspace.getConfiguration("patternDecorator").get<DecoratorConfig[]>("decorators")
+        // types = config.map(x => {
+        //     return {
+        //         key: x.pattern,
+        //         type: patternDecorationType(x.before, x.after)
+        //     }
+        // })
     })
 
     vscode.workspace.onDidOpenTextDocument(editor => {
