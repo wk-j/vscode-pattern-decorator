@@ -32,7 +32,8 @@ function patternDecorationType(before, after) {
 export function activate(context: vscode.ExtensionContext) {
     console.log('Patter decorator is activated');
 
-    let timeout: NodeJS.Timer | undefined = undefined;
+    // let timeout: NodeJS.Timer | undefined = undefined;
+
     let activeEditor = vscode.window.activeTextEditor;
     let config = vscode.workspace.getConfiguration("patternDecorator").get<DecoratorConfig[]>("decorators")
     let types = config.map(x => {
@@ -55,9 +56,7 @@ export function activate(context: vscode.ExtensionContext) {
             };
             decorators.push(decoration);
         }
-
         return decorators
-
     }
 
     function updateDecorations() {
@@ -81,32 +80,43 @@ export function activate(context: vscode.ExtensionContext) {
         }
     }
 
-    function triggerUpdateDecorations() {
-        var file = vscode.window.activeTextEditor.document.fileName;
-        // if (file.endsWith(".md")) {
-        if (timeout) {
-            clearTimeout(timeout);
-            timeout = undefined;
-        }
-        timeout = setTimeout(updateDecorations, 2000);
-        // }
-    }
+    // function triggerUpdateDecorations() {
+    //     var file = vscode.window.activeTextEditor.document.fileName;
+    //     if (timeout) {
+    //         clearTimeout(timeout);
+    //         timeout = undefined;
+    //     }
+    //     timeout = setTimeout(updateDecorations, 2000);
+    // }
 
-    if (activeEditor) {
-        triggerUpdateDecorations();
-    }
+    // if (activeEditor) {
+    //     triggerUpdateDecorations();
+    // }
+
+    vscode.workspace.onDidChangeConfiguration(() => {
+        config = vscode.workspace.getConfiguration("patternDecorator").get<DecoratorConfig[]>("decorators")
+        types = config.map(x => {
+            return {
+                key: x.pattern,
+                type: patternDecorationType(x.before, x.after)
+            }
+        })
+    })
+
+    vscode.workspace.onDidOpenTextDocument(editor => {
+        updateDecorations();
+    })
 
     vscode.window.onDidChangeActiveTextEditor(editor => {
         activeEditor = editor;
         if (editor) {
-            triggerUpdateDecorations();
+            updateDecorations();
         }
     }, null, context.subscriptions);
 
     vscode.workspace.onDidChangeTextDocument(event => {
         if (activeEditor && event.document === activeEditor.document) {
-            triggerUpdateDecorations();
+            updateDecorations();
         }
     }, null, context.subscriptions);
-
 }
